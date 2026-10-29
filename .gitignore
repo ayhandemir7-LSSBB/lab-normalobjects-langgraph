@@ -1,1 +1,4 @@
 .env
+complaints.db
+.gradio/
+__pycache__/
