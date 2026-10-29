@@ -1,0 +1,44 @@
+# NormalObjects - Strict Complaint Processor (LangGraph)
+# Dependencies for:
+#   normalobjects_langgraph.ipynb  - the lab notebook
+#   normalobjects_langgraph.py     - the graph as a script / module
+#   app.py                         - the Gradio web app (Complaint Desk)
+#
+# Tested with Python 3.11 (conda env "bootcamp-env"). Versions below are the ones the lab was run with.
+#
+# Setup:
+#   conda create -n bootcamp-env python=3.11      (or: python3.11 -m venv .venv && source .venv/bin/activate)
+#   conda activate bootcamp-env
+#   pip install -r requirements.txt
+#   echo "OPENAI_API_KEY=sk-..." > .env            (never commit .env; it is in .gitignore)
+#
+# Run:
+#   python normalobjects_langgraph.py              run the 5 test complaints in the terminal
+#   python normalobjects_langgraph.py --extensions also run the parallel-investigation demo
+#   python app.py                                  start the web app on http://127.0.0.1:7860
+#
+# Internet access is needed for the OpenAI API calls (model gpt-4o-mini), the notebook's Mermaid graph
+# image (draw_mermaid_png renders online) and the app's Google Fonts.
+# Standard-library modules used (no install needed): sqlite3, json, html, re, operator, datetime, typing.
+
+# --- LangGraph workflow (state graph, conditional edges, Send, RetryPolicy, MemorySaver checkpointer) ---
+langgraph==1.2.18
+langgraph-checkpoint==4.3.0
+
+# --- LLM: ChatOpenAI + HumanMessage ---
+langchain-openai==1.7.3
+langchain-core==1.7.0
+openai==3.26.1
+
+# --- Loads OPENAI_API_KEY from .env ---
+python-dotenv==1.2.4
+
+# --- Web app (app.py) and notebook Extension E5 ---
+gradio==6.31.0
+
+# --- Notebook: app.get_graph().draw_ascii() fallback when the Mermaid image can't be rendered ---
+grandalf==0.8
+
+# --- Notebook kernel (running the .ipynb in VS Code / Jupyter) ---
+ipykernel==7.4.0
+ipython==9.17.1
